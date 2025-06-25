@@ -20,7 +20,7 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "sap",
+      "output": "spa",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
