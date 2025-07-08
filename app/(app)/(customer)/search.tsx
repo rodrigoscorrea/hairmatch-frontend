@@ -6,13 +6,16 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView
+  ScrollView,
+  Image,
+  Platform
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
 import BottomTabBar from "@/components/BottomBar";
 import { styles } from "@/styles/customer/styles/SearchStyle"; // Adjust path
 import { useSearch } from "@/hooks/customerHooks/useSearch"; // <-- Our new hook
+import { API_BACKEND_URL } from "@/app/_layout";
 
 export default function SearchScreen() {
   const {
@@ -23,11 +26,18 @@ export default function SearchScreen() {
     serviceResults,
     handleNavigateToHairdresser,
     handleNavigateToService,
+    handleGoBack
   } = useSearch();
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+      <View style={styles.Headercontainer}>
+        {Platform.OS === 'web' && (
+          <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color="#333" />
+          </TouchableOpacity>
+        )}
         <View style={styles.searchWrapper}>
           <Ionicons name="search" size={20} color="#7B3F00" style={styles.iconLeft} />
           <TextInput
@@ -39,6 +49,7 @@ export default function SearchScreen() {
           />
           <MaterialIcons name="filter-list" size={24} color="#7B3F00" style={styles.iconRight} />
         </View>
+      </View>
         
         {loading ? (
           <ActivityIndicator size="large" color="#FF6B00" style={{ marginTop: 20 }} />
@@ -47,7 +58,7 @@ export default function SearchScreen() {
             {/* Render Hairdresser Results */}
             {hairdresserResults.length > 0 && hairdresserResults.map((result) => (
               <TouchableOpacity style={styles.card} key={`hairdresser-${result.id}`} onPress={() => handleNavigateToHairdresser(result.id!)}>
-                <View style={styles.avatar} />
+                <Image source={{uri: `${result.user.profile_picture}`}} style={styles.avatar} />
                 <View style={styles.info}>
                   <Text style={styles.name}>{`${result.user.first_name} ${result.user.last_name}`}</Text>
                   <View style={styles.ratingRow}>
