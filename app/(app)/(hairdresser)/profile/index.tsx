@@ -10,7 +10,6 @@ import { API_BACKEND_URL } from '@/app/_layout';
 export default function HairdresserProfileScreen() {
   const { hairdresser, preferences, loading, goToSettings, goToServices, goToAvailability } = useHairdresserProfile();
   const hairdresser_image = `${API_BACKEND_URL}${hairdresser.user.profile_picture}`;
-  console.log('oiii')
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollContainer}>

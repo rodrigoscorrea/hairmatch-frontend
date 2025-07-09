@@ -6,6 +6,8 @@ import { useReserveDetails } from '@/hooks/customerHooks/useReserveDetails';
 import { formatDate} from '@/utils/date-formater';
 import { formatTime } from '@/utils/time-formater';
 import { API_BACKEND_URL } from '@/app/_layout';
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
 import ConfirmationModal from '@/components/modals/confirmationModal/ConfirmationModal';
 
 export default function ReserveInfoScreen() {
@@ -73,11 +75,11 @@ export default function ReserveInfoScreen() {
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Dia:</Text>
-                        <Text style={styles.detailValue}>{formatDate(start_time)}</Text>
+                        <Text style={styles.detailValue}>{formatDate(start_time).toISOString()}</Text>
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Hora:</Text>
-                        <Text style={styles.detailValue}>{formatTime(start_time)}</Text>
+                        <Text style={styles.detailValue}>{formatTime(start_time).toISOString()}</Text>
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Serviço:</Text>
