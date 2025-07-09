@@ -75,11 +75,11 @@ export default function ReserveInfoScreen() {
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Dia:</Text>
-                        <Text style={styles.detailValue}>{formatDate(start_time).toISOString()}</Text>
+                        <Text style={styles.detailValue}>{formatDate(start_time)}</Text>
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Hora:</Text>
-                        <Text style={styles.detailValue}>{formatTime(start_time).toISOString()}</Text>
+                        <Text style={styles.detailValue}>{formatTime(start_time)}</Text>
                     </View>
                     <View style={styles.detailRow}>
                         <Text style={styles.detailLabel}>Serviço:</Text>
