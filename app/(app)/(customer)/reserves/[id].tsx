@@ -45,8 +45,8 @@ export default function ReserveInfoScreen() {
 
   const { service, start_time } = reserve;
   const { hairdresser } = service;
-  const hairdresser_image = `${API_BACKEND_URL}${reserve.service.hairdresser.user.profile_picture}`;
-  const reserve_image = `${API_BACKEND_URL}${reserve.review.picture}`;
+  const hairdresser_image = `${API_BACKEND_URL}${reserve?.service?.hairdresser?.user?.profile_picture}`;
+  const reserve_image = `${API_BACKEND_URL}${reserve?.review?.picture}`;
   const fallback_image = require('../../../../assets/images/profile_picture_placeholder.png');
   return (
     <SafeAreaView style={styles.container}>
