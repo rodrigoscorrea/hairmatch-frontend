@@ -47,7 +47,7 @@ export default function ReserveInfoScreen() {
   const { hairdresser } = service;
   const hairdresser_image = `${API_BACKEND_URL}${reserve.service.hairdresser.user.profile_picture}`;
   const reserve_image = `${API_BACKEND_URL}${reserve.review.picture}`;
-
+  const fallback_image = require('../../../../assets/images/profile_picture_placeholder.png');
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -62,7 +62,7 @@ export default function ReserveInfoScreen() {
         {/* Profile Card */}
         <View style={styles.profileCard}>
             <View style={styles.profileHeader}>
-                <Image source={{uri: hairdresser_image}} style={styles.avatar} />
+                <Image source={{uri: hairdresser_image ? hairdresser_image : fallback_image}} style={styles.avatar} />
                 <View style={styles.profileInfo}>
                     <View style={styles.nameContainer}>
                         <Text style={styles.name}>{`${hairdresser.user.first_name} ${hairdresser.user.last_name}`}</Text>
@@ -117,7 +117,7 @@ export default function ReserveInfoScreen() {
 
               {/* Review Image */}
               {reserve.review.picture ? (
-                  <Image source={{ uri: reserve_image }} style={styles.reviewImage} />
+                  <Image source={{ uri: reserve_image ? reserve_image : fallback_image }} style={styles.reviewImage} />
               ) : (
                   <View style={styles.imagePlaceholder}>
                       <Ionicons name="camera" size={40} color="#ccc" />
